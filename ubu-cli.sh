@@ -1,4 +1,5 @@
-$!/bin/bash
+#!/bin/bash
+# Run: https://raw.githubusercontent.com/hydroparadise/skitty/refs/heads/main/ubu-cli.sh | bash
 
 echo "Installing lolcat..."
 sudo apt-get install lolcat -y
