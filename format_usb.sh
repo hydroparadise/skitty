@@ -8,7 +8,7 @@ df
 lsblk
 
 # usbdisk="/dev/sdc1"
-read -p "Type a file system (ex: '/dev/sdc1')): " usbdisk
+read -p "Type a file disk (ex: '/dev/sdc1')): " usbdisk
 
 echo "Unmounting $usbdisk"
 sudo umount $usbdisk
