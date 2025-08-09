@@ -5,12 +5,12 @@
 
 mount
 df
+sudo fdisk -l
 lsblk
 
-
-# usbdisk="/dev/sdc1"
-read -p "Type a file disk (ex: '/dev/sdc1')): " usbdisk
-read -p "File name for image: " filename
+# usbdisk="/dev/sdc"
+read -p "Type a file disk (ex: '/dev/sdc')): " usbdisk
+read -p "File name for image (ex: 'usb_img.img'): " filename
 
 defsavedir=~
 read -p "Save path (default=$defsavedir): " savedir
@@ -21,4 +21,5 @@ fi
 
 savepath="${savedir}/${filename}"
 
-sudo dd if=$usbdisk of=$savepath bs=4M status=progress
+echo dd if=$usbdisk of=$savepath bs=2048 status=progress
+# sudo dd if=$usbdisk of=$savepath bs=4M status=progress
