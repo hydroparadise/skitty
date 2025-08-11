@@ -6,6 +6,7 @@
 mount
 df
 sudo fdisk -l
+blkid
 lsblk
 
 

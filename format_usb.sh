@@ -5,7 +5,10 @@
 
 mount
 df
+sudo fdisk -l
+blkid
 lsblk
+
 
 # usbdisk="/dev/sdc1"
 read -p "Type a file disk (ex: '/dev/sdc1')): " usbdisk
