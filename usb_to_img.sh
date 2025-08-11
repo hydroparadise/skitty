@@ -22,4 +22,5 @@ fi
 savepath="${savedir}/${filename}"
 
 echo dd if=$usbdisk of=$savepath bs=2048 status=progress
+echo cp $savepath /mnt/nasa/base/backup/img/$filename
 # sudo dd if=$usbdisk of=$savepath bs=4M status=progress
