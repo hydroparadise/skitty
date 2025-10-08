@@ -126,7 +126,7 @@ if dpkg -s mariadb-server >/dev/null 2>&1; then
     log "MariaDB is already installed – skipping installation."
 else
     # ------------------------------------------------------
-    # 9️⃣  Install MariaDB server
+    # nstall MariaDB server
     # ------------------------------------------------------
     log "Installing MariaDB 11.8 server..."
     apt-get install -y mariadb-server || error "MariaDB installation failed"
