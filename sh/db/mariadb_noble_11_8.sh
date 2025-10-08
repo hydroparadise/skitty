@@ -18,7 +18,7 @@
 #  * Debug‑symbol packages (‑dbgsym) are not installed.
 #  * Source packages are not enabled by default.
 #  ------------------------------------------------------
-#
+#  Check OS: cat /etc/os-release
 
 set -euo pipefail
 
@@ -35,6 +35,39 @@ error()  { echo -e "\e[31m[✗] $*\e[0m" >&2; exit 1; }
 if [[ $EUID -ne 0 ]]; then
     error "This script must be run as root (or with sudo)."
 fi
+
+log "Detecting OS codename …"
+# Grab the variables from /etc/os-release – it defines UBUNTU_CODENAME
+# (Linux‑Mint sets this field even when VERSION_CODENAME is something else).
+source /etc/os-release || error "Could not read /etc/os-release"
+
+# Prefer UBUNTU_CODENAME, fall back to VERSION_CODENAME
+CODENAME="${UBUNTU_CODENAME:-${VERSION_CODENAME}}"
+
+log "  • Detected Ubuntu codename: $CODENAME"
+
+if [[ "$CODENAME" != "noble" ]]; then
+    error <<EOF
+The MariaDB 11.8 repository that this script adds is built for
+Ubuntu 24.04 (codename **noble**).  Your system reports the
+codename '$CODENAME', which is not compatible with the repo
+definition in /etc/apt/sources.list.d/mariadb.sources.
+
+If you are on a different Ubuntu release (e.g. “jammy”, “focal”,
+or an older Linux‑Mint release) you have two options:
+
+  • Edit the repo file that the script creates and replace the
+    line `Suites: noble` with the codename that matches your
+    distribution.  Then re‑run the script.
+
+  • Use a MariaDB version that is published for your codename
+    instead of 11.8.
+
+Because of the mismatch the install would fail at the very first
+`apt-get update` after adding the repo, so we abort early.
+EOF
+fi
+
 
 # ------------------------------------------------------
 # Install prerequisites (apt‑transport‑https + curl)
