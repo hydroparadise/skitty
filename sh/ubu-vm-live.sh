@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run: curl -s -o- https://raw.githubusercontent.com/hydroparadise/skitty/ubu-vm-live.sh | bash
+# Run: curl -s -o- https://raw.githubusercontent.com/hydroparadise/skitty/sh/ubu-vm-live.sh | bash
 
 # Check for QEMU install
 if command -v qemu-system-x86_64 &> /dev/null; then

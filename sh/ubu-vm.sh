@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run: curl -s -o- https://raw.githubusercontent.com/hydroparadise/skitty/ubu-vm.sh | bash
+# Run: curl -s -o- https://raw.githubusercontent.com/hydroparadise/skitty/sh/ubu-vm.sh | bash
 
 # Check for QEMU install
 if command -v qemu-system-x86_64 &> /dev/null; then
@@ -142,7 +142,7 @@ else
 
    read -p "Enter the user name created during setup: " user < /dev/tty  &&
    ssh "$user"@localhost -p 5555 -t \
-     "sudo apt-get install git -y && git clone https://github.com/hydroparadise/skitty; cd skitty && . ubu-cli.sh; bash -l"
+     "sudo apt-get install git -y && git clone https://github.com/hydroparadise/skitty; cd skitty/sh && . ubu-cli.sh; bash -l"
 
 fi
 
