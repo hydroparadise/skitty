@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Because Java is needed
+echo "Installing default-jdk"
+sudo apt install default-jdk
+
+echo "Open JDK 23 Option: https://download.java.net/java/GA/jdk23.0.1/c28985cbf10d4e648e4004050f8781aa/11/GPL/openjdk-23.0.1_windows-x64_bin.zip"
